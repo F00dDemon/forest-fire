@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,7 +44,8 @@ public class Fire {
         // HINT: when adding to your BFS queue, you can include more information than
         // just a location. What other information might be useful?
 
-        char[][] forestClone = forest.clone();
+        char[][] forestClone = new char[forest.length][];
+        for (int i = 0; i < forest.length; i++) { forestClone[i] = forest[i].clone(); }
         return timeToBurn(forestClone, matchR, matchC, 0);
     }
     
@@ -63,7 +63,6 @@ public class Fire {
             for(int[] move: possibleMoves(forest, location[0], location[1])){
                 treeQueue.add(new int[]{move[0], move[1], depth + 1});
             }
-
         }
 
         return depth;
